@@ -26,9 +26,11 @@ queue* createqueue(int qsize){
  * */
 
 void deletequeue(queue *Q){
-	free(Q->store);
-	free(Q);
-	Q=NULL;	
+	if(Q){
+		free(Q->store);
+		free(Q);
+		Q=NULL;
+	}	
 }
 
 /*

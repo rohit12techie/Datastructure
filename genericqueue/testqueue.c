@@ -49,7 +49,7 @@ void showqueue(queue *Q, int type){
 void testintdata(){
 	queue *q = createqueue(QUEUELEN);
 	int i;
-	int data[]={1,2,3,4,5,6,7,8,9,QUEUELEN};
+	int data[]={1,2,3,4,5,6,7,8,9,10};
 	for(i=0; i<INPUTLEN; i++){
 		enqueue(&data[i], q);
 		showqueue(q,INT);

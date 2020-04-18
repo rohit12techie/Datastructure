@@ -5,7 +5,6 @@ typedef struct _queue{
         int f;
         int r;
         int maxlen;
-	int datalen;
         void **store;
 }queue;
 
