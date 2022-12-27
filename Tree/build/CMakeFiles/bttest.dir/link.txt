@@ -1,1 +1,0 @@
-/usr/bin/c++ CMakeFiles/bttest.dir/src/binarytreeimpl.cpp.o CMakeFiles/bttest.dir/tests/createbinarytree.cpp.o CMakeFiles/bttest.dir/tests/test_btree.cpp.o CMakeFiles/bttest.dir/tests/main.cpp.o -o bttest  -lgtest 

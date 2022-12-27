@@ -1,1 +1,0 @@
-/usr/bin/c++ CMakeFiles/binarytreeimpl.cpp.dir/test_binary_tree.cpp.o -o binarytreeimpl.cpp 
