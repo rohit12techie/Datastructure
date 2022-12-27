@@ -2,12 +2,16 @@
 #include "binarytree.hpp"
 
 BinaryTree::BinaryTree(){
-    std::cout<<"Constructor is called"<<std::endl;
+    //std::cout<<"Constructor is called"<<std::endl;
     this->btroot = NULL;
 }
 
 BinaryTree::~BinaryTree(){
-    std::cout<<"Destructor is called"<<std::endl;
+    //std::cout<<"Destructor is called"<<std::endl;
+}
+
+Node* BinaryTree::getRoot(){
+    return this->btroot;
 }
 
 void BinaryTree::insert(Node* &root, int num){
@@ -98,7 +102,8 @@ Node* BinaryTree::removeNode(Node* root, int val){
             else{
                 Node *tmp = minOnRight(root->right);
                 std::swap(tmp->data, root->data);
-                return removeNode(tmp, tmp->data);
+                root->right = removeNode(tmp, tmp->data);
+                return root;
             }
         }
     }
@@ -109,6 +114,7 @@ Node* BinaryTree::remove(Node* root, int val){
     if(root != nullptr){
         if(root->data == val){
             root = removeNode(root, val);
+            this->btroot = root;
         }
         else{
             Node* pleft = find(root->left, val);

@@ -19,6 +19,7 @@ class BinaryTree{
     Node* btroot;
     BinaryTree();
     ~BinaryTree();
+    Node* getRoot();
     /**
      * I/O
     */

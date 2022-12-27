@@ -4,13 +4,40 @@
 
 void test_minimal(){
     BinaryTree *bt = createTestBTree();
-    bt->showLevelOrder(bt->btroot);
-    bt->remove(bt->btroot, 13);
-    bt->showLevelOrder(bt->btroot);
-    bt->remove(bt->btroot, 1);
-    bt->showLevelOrder(bt->btroot);
-    bt->remove(bt->btroot, 3);
-    bt->showLevelOrder(bt->btroot);
+    std::cout<<"************** test-minimal START ************* "<<std::endl;
+    bt->showLevelOrder(bt->getRoot());
+    std::cout<<"Removing Node not in the BT"<<std::endl;
+    bt->remove(bt->getRoot(), 15);
+    bt->showLevelOrder(bt->getRoot());
+    std::cout<<"Removing Node 13"<<std::endl;
+    bt->remove(bt->getRoot(), 13);
+    bt->showLevelOrder(bt->getRoot());
+    std::cout<<"Removing Node 1"<<std::endl;
+    bt->remove(bt->getRoot(), 1);
+    bt->showLevelOrder(bt->getRoot());
+    std::cout<<"Removing Node 3"<<std::endl;
+    bt->remove(bt->getRoot(), 3);
+    bt->showLevelOrder(bt->getRoot());
+    std::cout<<"************** test-minimal END ************* "<<std::endl;
+}
+
+void test_minimal_remove_root_first(){
+    BinaryTree *bt = createTestBTree();
+    std::cout<<"\n************** test-minimal-with-root-first START ************* "<<std::endl;
+    bt->showLevelOrder(bt->getRoot());
+    std::cout<<"Removing Root Node first - 3"<<std::endl;
+    bt->remove(bt->getRoot(), 3);
+    bt->showLevelOrder(bt->getRoot());
+    std::cout<<"Removing Node 1"<<std::endl;
+    bt->remove(bt->getRoot(), 1);
+    bt->showLevelOrder(bt->getRoot());
+    std::cout<<"Removing Node not present in BT- 21"<<std::endl;
+    bt->remove(bt->getRoot(), 21);
+    bt->showLevelOrder(bt->getRoot());
+    std::cout<<"Removing Node 13"<<std::endl;
+    bt->remove(bt->getRoot(), 13);
+    bt->showLevelOrder(bt->getRoot());
+    std::cout<<"************** test-minimal-with-root-first END ************* "<<std::endl;
 }
 
 void test_random(){
@@ -45,6 +72,7 @@ void test_random(){
 
 int main(){
     test_minimal();
+    test_minimal_remove_root_first();
     test_random();
     return 0;
 }
