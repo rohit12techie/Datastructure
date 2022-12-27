@@ -6,20 +6,20 @@ project(binarytree)
 # Add main.cpp file of project root directory as source file
 set(GTEST_SRCS 
     src/binarytreeimpl.cpp
-    tests/sample_btree.cpp 
+    sample/sample_btree.cpp 
     tests/btree_16nodes_test.cpp
     tests/main.cpp)
 
 set(GTEST_SRCS_MORE 
     src/binarytreeimpl.cpp
-    tests/sample_btree.cpp 
+    sample/sample_btree.cpp 
     tests/btree_1000nodes_test.cpp
     tests/main.cpp)
 
 set(SAMPLE_SRCS 
     src/binarytreeimpl.cpp
-    tests/sample_btree.cpp 
-    tests/btree_validation_test.cpp)
+    sample/sample_btree.cpp 
+    sample/btree_validation_test.cpp)
 
 # Add executable target with source files listed in GTEST_SRCS variable
 add_executable(btunittest ${GTEST_SRCS})
