@@ -40,3 +40,15 @@ BinaryTree* createTestBTree(){
     btree->insert(btree->btroot, 13);
     return btree;
 }
+
+BinaryTree* createTestBTree2(){
+    BinaryTree* btree = new BinaryTree();
+    btree->insert(btree->btroot, 3);
+    btree->insert(btree->btroot, 1);
+    btree->insert(btree->btroot, 13);
+    btree->insert(btree->btroot, 13);
+    btree->insert(btree->btroot, 10);
+    btree->insert(btree->btroot, 0);
+    btree->insert(btree->btroot, 18);
+    return btree;
+}

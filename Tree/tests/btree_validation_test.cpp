@@ -1,5 +1,5 @@
 #include <iostream>
-#include "createbinarytree.hpp"
+#include "sample_btree.hpp"
 #include "binarytree.hpp"
 
 void test_minimal(){
@@ -40,7 +40,41 @@ void test_minimal_remove_root_first(){
     std::cout<<"************** test-minimal-with-root-first END ************* "<<std::endl;
 }
 
-void test_random(){
+void test_duplicate_remove(){
+    BinaryTree *bt = createTestBTree2();
+    std::cout<<"\n************** test-remove-with-root-first START ************* "<<std::endl;
+    bt->update(bt->getRoot(), 10, 13);
+    bt->showLevelOrder(bt->getRoot());
+    std::cout<<"Removing Root Node first - 13"<<std::endl;
+    bt->remove(bt->getRoot(), 13);
+    bt->showLevelOrder(bt->getRoot());
+    std::cout<<"Removing Node 1"<<std::endl;
+    bt->remove(bt->getRoot(), 1);
+    bt->showLevelOrder(bt->getRoot());
+    std::cout<<"Removing Node not present in BT- 21"<<std::endl;
+    bt->remove(bt->getRoot(), 21);
+    bt->showLevelOrder(bt->getRoot());
+    std::cout<<"Removing Node 3"<<std::endl;
+    bt->remove(bt->getRoot(), 3);
+    bt->showLevelOrder(bt->getRoot());
+    std::cout<<"************** test-remove-with-root-first END ************* "<<std::endl;
+}
+
+void test_remove_random(){
+    int N = 12;
+    std::vector<int> values = generate_random_vector(N);
+    BinaryTree *bt = createDummyBTree(values);
+
+    std::cout<<"\n************** test-remove-random-with-root-first START ************* "<<std::endl;
+    bt->showLevelOrder(bt->getRoot());
+    std::cout<<"Removing Root Node : "<<values[values.size()/2]<<std::endl;
+    bt->remove(bt->getRoot(), values[values.size()/2]);
+    bt->showLevelOrder(bt->getRoot());
+    std::cout<<"************** test-remove-random-with-root-first END ************* "<<std::endl;
+}
+
+
+void test_find_and_update(){
     int N = 12;
     std::vector<int> values = generate_random_vector(N);
     BinaryTree *bt = createDummyBTree(values);
@@ -71,8 +105,10 @@ void test_random(){
 }
 
 int main(){
-    test_minimal();
-    test_minimal_remove_root_first();
-    test_random();
+    //test_minimal();
+    //test_minimal_remove_root_first();
+    //test_find_and_update();
+    test_duplicate_remove();
+    //test_remove_random();
     return 0;
 }

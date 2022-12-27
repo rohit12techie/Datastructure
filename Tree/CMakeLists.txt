@@ -4,22 +4,31 @@ project(binarytree)
 #find_package(Qt6 REQUIRED COMPONENTS Core)
 
 # Add main.cpp file of project root directory as source file
-set(SOURCE_FILES 
+set(GTEST_SRCS 
     src/binarytreeimpl.cpp
-    tests/createbinarytree.cpp 
-    tests/test_btree.cpp
+    tests/sample_btree.cpp 
+    tests/btree_16nodes_test.cpp
     tests/main.cpp)
 
-set(SOURCES 
+set(GTEST_SRCS_MORE 
     src/binarytreeimpl.cpp
-    tests/createbinarytree.cpp 
-    tests/test_binary_tree.cpp)
+    tests/sample_btree.cpp 
+    tests/btree_1000nodes_test.cpp
+    tests/main.cpp)
 
-# Add executable target with source files listed in SOURCE_FILES variable
-add_executable(btgoogletest ${SOURCE_FILES})
-add_executable(bttest ${SOURCES})
-target_include_directories(btgoogletest PRIVATE include)
-target_include_directories(bttest PRIVATE include)
-target_link_libraries(btgoogletest gtest)
+set(SAMPLE_SRCS 
+    src/binarytreeimpl.cpp
+    tests/sample_btree.cpp 
+    tests/btree_validation_test.cpp)
+
+# Add executable target with source files listed in GTEST_SRCS variable
+add_executable(btunittest ${GTEST_SRCS})
+add_executable(btunittestmore ${GTEST_SRCS_MORE})
+add_executable(btsampletest ${SAMPLE_SRCS})
+target_include_directories(btunittest PRIVATE include)
+target_include_directories(btunittestmore PRIVATE include)
+target_include_directories(btsampletest PRIVATE include)
+target_link_libraries(btunittest gtest)
+target_link_libraries(btunittestmore gtest)
 #target_link_libraries(bttest PRIVATE Qt6::Core)
 

@@ -84,6 +84,7 @@ Node* BinaryTree::maxOnLeft(Node* root){
 
 Node* BinaryTree::removeNode(Node* root, int val){
     if(root != nullptr){
+        //std::cout<<"Current Node:"<<root->data<<" Val: "<<val<<std::endl;
         if(root->data == val){
             if(root->left == nullptr && root->right == nullptr){
                 delete(root);
@@ -95,19 +96,26 @@ Node* BinaryTree::removeNode(Node* root, int val){
                 return tmp;
             }
             else if(root->right == nullptr){
-                Node* tmp = root->right;
+                Node* tmp = root->left;
                 delete(root);
                 return tmp;
             }
             else{
                 Node *tmp = minOnRight(root->right);
+                //std::cout<<"tmp1 : "<<tmp->data<<std::endl;
                 std::swap(tmp->data, root->data);
-                root->right = removeNode(tmp, tmp->data);
+                //std::cout<<"tmp2 : "<<tmp->data<<std::endl;
+                root->right = removeNode(root->right, tmp->data);
                 return root;
             }
         }
+        else{
+            //this->showLevelOrder(this->getRoot());
+            root->left = removeNode(root->left, val);
+            root->right = removeNode(root->right, val);   
+        }
     }
-    return nullptr;
+    return root;
 }
 
 Node* BinaryTree::remove(Node* root, int val){
@@ -117,17 +125,21 @@ Node* BinaryTree::remove(Node* root, int val){
             this->btroot = root;
         }
         else{
-            Node* pleft = find(root->left, val);
-            if(pleft != nullptr){
-                root->left = removeNode(pleft, val);
-            }
-            else{
-                Node* pright = find(root->right, val);
-                if(pright != nullptr){
-                    root->right = removeNode(pright, val);
-                }   
-            }
+            root = removeNode(root, val);
         }
+        
+        // else{
+        //     Node* pleft = find(root->left, val);
+        //     if(pleft != nullptr){
+        //         root->left = removeNode(pleft, val);
+        //     }
+        //     else{
+        //         Node* pright = find(root->right, val);
+        //         if(pright != nullptr){
+        //             root->right = removeNode(pright, val);
+        //         }   
+        //     }
+        // }
     }
     return root;
 }

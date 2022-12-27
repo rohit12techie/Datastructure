@@ -17,6 +17,7 @@
 class BinaryTree{
  public:
     Node* btroot;
+    
     BinaryTree();
     ~BinaryTree();
     Node* getRoot();
