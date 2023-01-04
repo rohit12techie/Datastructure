@@ -1,16 +1,5 @@
 #include <iostream>
-
-class Node{
-    int data; 
-
-    public:
-
-    Node *left;
-    Node *right;
-
-    Node *next;
-    Node *right;
-};
+#include "node.hpp"
 
 Node* btree_to_2d_list(Node *root, Node *newroot){
     if(root != NULL){
